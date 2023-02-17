@@ -7,24 +7,25 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import com.devsuperior.projetospring.entities.Category;
 import com.devsuperior.projetospring.entities.Product;
 
 @Component
-public class CategoryRepository {
+
+public class ProductRepository {
+
+	private Map<Long, Product> map = new HashMap<>();
 	
-	private Map<Long, Category> map = new HashMap<>();
-	
-	public void save(Category obj) {
+	public void save(Product obj) {
 		map.put(obj.getId(), obj);
 	}
 
-	public Category findById(Long id) { //método que retorna a categoria do id informado
+	public Product findById(Long id) { //método que retorna a categoria do id informado
 		return map.get(id); //pesquisar no map se tem a categoria com id informado
 	}
 	
-	public List<Category> findAll() {
-		return new ArrayList<Category>(map.values());//Pega todos os valores e rotna
+	public List<Product> findAll() {
+		return new ArrayList<Product>(map.values());//Pega todos os valores e retorna uma nova lista com todos os valores.
+		
 	}
 
 }
